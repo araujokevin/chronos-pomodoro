@@ -15,16 +15,7 @@ body {
   color: var(--text-default);
 }
 
-.container-fluid {
-  max-width: auto;
-}
-
-.container {
-  max-width: 98rem;
-
-  margin: 0 auto;
-}
-
-.container {
-  padding: 3.2rem;
+input,
+button {
+  font-family: inherit;
 }
