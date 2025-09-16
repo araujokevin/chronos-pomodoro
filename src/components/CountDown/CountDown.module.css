@@ -1,0 +1,12 @@
+.container {
+  font-size: 14rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Quando a tela for menor que 560px */
+@media (max-width: 560px) {
+  .container {
+    font-size: 7rem;
+  }
+}
