@@ -1,6 +1,7 @@
 import { Container } from './components/Container/Container';
-import { Heading } from './components/Heading/Heading';
+// import { Heading } from './components/Heading/Heading';
 import { Logo } from './components/Logo/Logo';
+import { Menu } from './components/Menu/Menu';
 import './styles/global.css';
 import './styles/theme.css';
 
@@ -12,7 +13,7 @@ export function App() {
       </Container>
 
       <Container>
-        <Heading>Menu</Heading>
+        <Menu />
       </Container>
     </>
   );
