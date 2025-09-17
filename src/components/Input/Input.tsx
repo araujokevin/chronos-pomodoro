@@ -1,3 +1,5 @@
+import styles from './Input.module.css';
+
 type InputProps = {
   id: string;
   labelText?: string;
@@ -7,7 +9,7 @@ export function Input({ id, labelText, type, ...props }: InputProps) {
   return (
     <>
       {labelText && <label htmlFor={id}>{labelText}</label>}
-      <input id={id} type={type} {...props} />
+      <input id={id} type={type} {...props} className={styles.input} />
     </>
   );
 }
