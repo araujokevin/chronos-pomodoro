@@ -31,3 +31,8 @@ form {
   flex-direction: column;
   gap: 2.4rem;
 }
+
+input,
+button {
+  font-family: inherit;
+}
