@@ -2,7 +2,7 @@ import { Home } from './pages/Home';
 import type { TaskStateModel } from './models/TaskStateModel';
 
 import { useState } from 'react';
-import { TaskContext } from './contexts/TaskContext';
+import { TaskContextProvider } from './contexts/TaskContext';
 
 import './styles/theme.css';
 import './styles/global.css';
@@ -41,8 +41,8 @@ export function App() {
   // return <Home />;
 
   return (
-    <TaskContext.Provider value={{ outraCoisa: 321 }}>
-      <Home />
-    </TaskContext.Provider>
+    <TaskContextProvider>
+      <Home />;
+    </TaskContextProvider>
   );
 }
