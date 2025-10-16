@@ -6,7 +6,6 @@ import { DefaultInput } from '../DefaultInput';
 export function MainForm() {
   return (
     <form className='form'>
-      <button>Clicar</button>
       <div className='formRow'>
         <DefaultInput
           id='meuInput'
