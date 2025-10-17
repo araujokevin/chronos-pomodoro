@@ -3,26 +3,57 @@ import { Cycles } from '../Cycles';
 import { DefaultButton } from '../DefaultButton';
 import { DefaultInput } from '../DefaultInput';
 import { useRef } from 'react';
+import type { TaskModel } from '../../models/TaskModel';
+import { useTaskContext } from '../../contexts/TaskContext/useTaskContext';
 
 export function MainForm() {
-  const taskNameInput = useRef<HTMLInputElement>(null);
+  const { setState } = useTaskContext();
+  const taskNameRef = useRef<HTMLInputElement>(null);
 
-  function handleCreateNewTask(event: React.FormEvent<HTMLFormElement>) {
+  function handleSubmitNewTask(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    console.log('task:', taskNameInput.current.value);
+    if (!taskNameRef.current) return;
+
+    const taskName = taskNameRef.current.value.trim();
+
+    if (!taskName) {
+      alert('Digite o nome da tarefa');
+      return;
+    }
+
+    const newTask: TaskModel = {
+      id: Date.now().toString(),
+      name: taskName,
+      startDate: Date.now(),
+      completeDate: null,
+      interruptDate: null,
+      duration: 1,
+      type: 'workTime',
+    };
+
+    const secondsRemaining = newTask.duration * 60;
+
+    setState(prevState => ({
+      ...prevState,
+      config: { ...prevState.config },
+      activeTask: newTask,
+      currentCycle: 1,
+      secondsRemaining,
+      formattedTimeRemaining: '00:00',
+      tasks: [...prevState.tasks, newTask],
+    }));
   }
 
   return (
-    <form onSubmit={handleCreateNewTask} className='form'>
-      <h1>O formulário foi enviado x</h1>
+    <form onSubmit={handleSubmitNewTask} className='form'>
       <div className='formRow'>
         <DefaultInput
-          id='meuInput'
+          id='taskName'
           type='text'
           labelText='Task'
           placeholder='Digite algo...'
-          ref={taskNameInput}
+          ref={taskNameRef}
         />
       </div>
 
