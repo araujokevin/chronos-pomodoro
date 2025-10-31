@@ -9,6 +9,7 @@ import { getNextCycle } from '../../utils/getNextCycle';
 import { getNextCycleType } from '../../utils/getNextCycleType';
 // import { formatSecondsToMinutes } from '../../utils/formatSecondsToMinutes';
 import { TaskActionTypes } from '../../contexts/TaskContext/taskActions';
+import { Tips } from '../Tips';
 
 export function MainForm() {
   const { state, dispatch } = useTaskContext();
@@ -41,6 +42,19 @@ export function MainForm() {
     };
 
     dispatch({ type: TaskActionTypes.START_TASK, payload: newTask });
+
+    const worker = new Worker(
+      new URL('../../workers/timerWorker.js', import.meta.url),
+    );
+
+    worker.postMessage('FAVOR'); //sim, posso fazer um favor
+    worker.postMessage('FALA_OI'); //OK:OI!
+    worker.postMessage('BLABLA'); //não entendi
+    worker.postMessage('FECHAR'); //Tá bom, vou fechar
+
+    worker.onmessage = function (event) {
+      console.log('PRINCIPAL recebeu:', event.data);
+    };
   }
 
   function handleInterruptedTask() {
@@ -61,7 +75,7 @@ export function MainForm() {
       </div>
 
       <div className='formRow'>
-        <p>Próximo intervalo é de X min</p>
+        <Tips />
       </div>
 
       {state.currentCycle > 0 && (
