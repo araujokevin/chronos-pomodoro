@@ -20,3 +20,17 @@ input,
 button {
   font-family: inherit;
 }
+
+.container {
+  max-width: 98rem;
+
+  margin: 0 auto;
+}
+
+.containerFluid {
+  margin: auto;
+}
+
+.content {
+  margin: 3.2rem;
+}
