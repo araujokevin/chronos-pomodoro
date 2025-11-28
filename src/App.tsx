@@ -1,10 +1,14 @@
+import { TimerIcon } from 'lucide-react';
 import { Heading } from './components/Heading';
 
 export function App() {
   return (
     <>
-      <Heading attr={123} attr2='String'>
-        Olá, mundo 1
+      <Heading>
+        Olá, mundo!
+        <button>
+          <TimerIcon />
+        </button>
       </Heading>
 
       <p>
