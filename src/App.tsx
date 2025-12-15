@@ -7,32 +7,10 @@ import { DefaultInput } from './components/DefaultInput';
 import { Logo } from './components/Logo';
 import { Menu } from './components/Menu';
 import { Footer } from './components/Footer';
-import { Heading } from './components/Heading';
-import { useState } from 'react';
 
 export function App() {
-  //Que todos os componentes que usam 'numero'.
-  //Saibam das mudanças em seu valor.
-
-  //Sempre que eu usar useState, não vou usar atribuição diretamente
-  // const [numero, configurarNumero] = useState(() => {
-  //   console.log('Lazy initialization');
-
-  //   return 0;
-  // });
-
-  const [numero, configurarNumero] = useState(0);
-
-  function handleClick() {
-    configurarNumero(prevState => prevState + 1);
-  }
-
   return (
     <>
-      <Heading>
-        Número: <span id='numero'>{numero}</span>
-      </Heading>
-      <button onClick={handleClick}>Aumenta</button>
       <Container>
         <Logo />
       </Container>
@@ -51,7 +29,7 @@ export function App() {
             <DefaultInput
               id='meuInput'
               type='text'
-              labelText={numero.toString()}
+              labelText='Task'
               placeholder='Digite algo'
             />
           </div>
