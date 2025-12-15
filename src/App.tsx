@@ -8,18 +8,23 @@ import { Logo } from './components/Logo';
 import { Menu } from './components/Menu';
 import { Footer } from './components/Footer';
 import { Heading } from './components/Heading';
+import { useState } from 'react';
 
 export function App() {
-  let numero = 0;
+  //Que todos os componentes que usam 'numero'.
+  //Saibam das mudanças em seu valor.
+
+  //Sempre que eu usar useState, não vou usar atribuição diretamente
+  // const [numero, configurarNumero] = useState(() => {
+  //   console.log('Lazy initialization');
+
+  //   return 0;
+  // });
+
+  const [numero, configurarNumero] = useState(0);
 
   function handleClick() {
-    const span = document.getElementById('numero');
-
-    if (!span) return;
-
-    numero += 1;
-    span.innerText = numero.toString();
-    console.log(numero, Date.now());
+    configurarNumero(prevState => prevState + 1);
   }
 
   return (
