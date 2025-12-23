@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Home } from './pages/Home';
 import type { TaskStateModel } from './models/TaskStateModel';
-import { TaskContext } from './contexts/TaskContext';
+import { TaskContextProvider } from './contexts/TaskContext';
 
 /*
 export type TaskStateModel = {
@@ -36,12 +36,8 @@ export function App() {
   const [state, setState] = useState(initialState);
 
   return (
-    <TaskContext.Provider
-      value={{
-        outraCoisa: 321,
-      }}
-    >
+    <TaskContextProvider>
       <Home />
-    </TaskContext.Provider>
+    </TaskContextProvider>
   );
 }
