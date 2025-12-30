@@ -49,7 +49,12 @@ export function MainForm() {
         currentCycle: nextCycle,
         secondsRemaining, // Conferir
         formattedSecondsRemaining: formatSecondsToMinutes(secondsRemaining), // Conferir
-        tasks: [...prevState.tasks, newTask],
+        tasks: prevState.tasks.map(task => {
+          if (prevState.activeTask && prevState.activeTask.id === task.id) {
+            return { ...task, interruptDate: Date.now() };
+          }
+          return task;
+        }),
       };
     });
   }
