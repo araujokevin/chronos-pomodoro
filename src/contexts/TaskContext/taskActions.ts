@@ -9,18 +9,17 @@ export const TaskActionTypes = {
 export type TaskActionType =
   (typeof TaskActionTypes)[keyof typeof TaskActionTypes];
 
-export type TaskActionWithPayload =
+export type TaskActionWithPayload = {
+  type: typeof TaskActionTypes.START_TASK;
+  payload: TaskModel;
+};
+
+export type TaskActionWithoutPayload =
   | {
-      type: typeof TaskActionTypes.START_TASK;
-      payload: TaskModel;
+      type: typeof TaskActionTypes.RESET_STATE;
     }
   | {
       type: typeof TaskActionTypes.INTERRUPT_TASK;
-      payload: TaskModel;
     };
-
-export type TaskActionWithoutPayload = {
-  type: typeof TaskActionTypes.RESET_STATE;
-};
 
 export type TaskActionModel = TaskActionWithPayload | TaskActionWithoutPayload;
