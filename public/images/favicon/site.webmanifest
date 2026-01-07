@@ -14,11 +14,6 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
-    },
-    {
-      "src": "/images/favicon/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
     }
   ],
   "theme_color": "#4f7fa3",
