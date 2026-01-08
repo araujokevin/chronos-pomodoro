@@ -73,8 +73,8 @@
   --text-muted: #424a63;
 
   /* 🔗 Links */
-  --link-color: #0f8f6a;
-  --link-hover: #0a6e54;
+  --link-color: #5f8fb4; /* Levemente mais vivo que o primary */
+  --link-hover: #3f6b8c; /* Mais contraste no hover */
 
   /* 🔔 Toastify */
   --toastify-text-color-light: #e9ecf3;
