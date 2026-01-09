@@ -81,18 +81,23 @@
 /* =========================
    Status
 ========================= */
-.statusCompleted {
+.responsiveTable td.status-completed {
   color: var(--success);
   font-weight: 500;
 }
 
-.statusInterrupted {
+.responsiveTable td.status-interrupted {
   color: var(--error);
   font-weight: 500;
 }
 
-.statusInProgress {
+.responsiveTable td.status-inProgress {
   color: var(--warning);
+  font-weight: 500;
+}
+
+.responsiveTable td.status-abandoned {
+  color: var(--gray-400);
   font-weight: 500;
 }
 

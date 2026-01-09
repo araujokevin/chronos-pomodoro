@@ -7,6 +7,14 @@ import { useTaskContext } from '../../contexts/TaskContext/useTaskContext';
 
 import styles from './styles.module.css';
 import { formatDate } from '../../utils/formatDate';
+import { getTaskStatus } from '../../utils/getTaskStatus';
+
+const statusLabelMap = {
+  completed: 'Completa',
+  interrupted: 'Interrompida',
+  inProgress: 'Em progresso',
+  abandoned: 'Abandonada',
+} as const;
 
 export function History() {
   const { state } = useTaskContext();
@@ -16,6 +24,7 @@ export function History() {
       <Container>
         <Heading>
           <span>History</span>
+
           <span className={styles.buttonContainer}>
             <DefaultButton
               icon={<TrashIcon />}
@@ -42,12 +51,18 @@ export function History() {
 
             <tbody>
               {state.tasks.map(task => {
+                const status = getTaskStatus(task, state.activeTask);
+
                 return (
                   <tr key={task.id}>
                     <td>{task.name}</td>
                     <td>{task.duration} min</td>
                     <td>{formatDate(task.startDate)}</td>
-                    <td>{task.interruptDate}</td>
+
+                    <td className={styles[`status-${status}`]}>
+                      {statusLabelMap[status]}
+                    </td>
+
                     <td>{task.type}</td>
                   </tr>
                 );
