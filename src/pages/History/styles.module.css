@@ -1,0 +1,116 @@
+/* =========================
+   Botão do header
+========================= */
+.buttonContainer button {
+  min-width: auto;
+  margin: 0;
+  padding: 1rem;
+}
+
+.buttonContainer button svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+/* =========================
+   Wrapper da tabela
+========================= */
+.responsiveTable {
+  overflow-x: auto;
+  border-radius: 0.8rem;
+  border: 1px solid var(--gray-700);
+  background-color: var(--gray-900);
+}
+
+/* Hint visual de scroll (mobile) */
+.responsiveTable::after {
+  content: '← arraste →';
+  display: block;
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  padding: 0.8rem 0;
+}
+
+/* =========================
+   Estrutura da tabela
+========================= */
+.responsiveTable table {
+  width: 100%;
+  min-width: 64rem;
+  font-size: 1.6rem;
+  border-collapse: collapse;
+}
+
+/* =========================
+   Cabeçalho
+========================= */
+.responsiveTable thead th {
+  background-color: var(--gray-600);
+  color: var(--text-default);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  letter-spacing: 0.05em;
+  padding: 1.6rem;
+  text-align: left;
+  border-bottom: 0.2rem solid var(--gray-700);
+}
+
+/* =========================
+   Corpo da tabela
+========================= */
+.responsiveTable tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.responsiveTable td {
+  background-color: var(--gray-800);
+  padding: 1.6rem;
+  text-align: left;
+  border-bottom: 0.2rem solid var(--gray-700);
+  white-space: nowrap;
+  color: var(--text-default);
+}
+
+/* Zebra striping sem variável nova */
+.responsiveTable tbody tr:nth-child(even) td {
+  background-color: var(--gray-700);
+}
+
+/* Hover */
+.responsiveTable tbody tr:hover td {
+  background-color: var(--gray-600);
+}
+
+/* Primeira coluna em destaque */
+.responsiveTable td:first-child {
+  font-weight: 500;
+}
+
+/* =========================
+   Status (opcional)
+========================= */
+.statusCompleted {
+  color: var(--success);
+  font-weight: 500;
+}
+
+.statusInterrupted {
+  color: var(--error);
+  font-weight: 500;
+}
+
+.statusInProgress {
+  color: var(--warning);
+  font-weight: 500;
+}
+
+/* =========================
+   Responsividade
+========================= */
+@media (max-width: 768px) {
+  .responsiveTable table {
+    min-width: 56rem;
+  }
+}
