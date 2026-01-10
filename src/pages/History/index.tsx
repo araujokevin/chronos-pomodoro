@@ -1,5 +1,5 @@
 import { TrashIcon } from 'lucide-react';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import { Container } from '../../components/Container';
 import { DefaultButton } from '../../components/DefaultButton';
@@ -50,6 +50,12 @@ export function History() {
       direction: prev.direction === 'desc' ? 'asc' : 'desc',
     }));
   }
+
+  useEffect(() => {
+    return () => {
+      showMessage.dismiss();
+    };
+  }, []);
 
   function handleResetHistory() {
     showMessage.dismiss();
