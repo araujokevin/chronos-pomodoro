@@ -12,6 +12,7 @@ import styles from './styles.module.css';
 import { formatDate } from '../../utils/formatDate';
 import { getTaskStatus } from '../../utils/getTaskStatus';
 import { sortTasks, type SortTasksOptions } from '../../utils/sortTasks';
+import { showMessage } from '../../adapters/showMessage';
 import { TaskActionTypes } from '../../contexts/TaskContext/taskActions';
 
 const statusLabelMap = {
@@ -51,9 +52,13 @@ export function History() {
   }
 
   function handleResetHistory() {
-    if (!confirm('Tem certeza')) return;
+    showMessage.dismiss();
 
-    dispatch({ type: TaskActionTypes.RESET_STATE });
+    showMessage.confirm('Tem certeza?', confirmation => {
+      if (!confirmation) return;
+
+      dispatch({ type: TaskActionTypes.RESET_STATE });
+    });
   }
 
   const taskTypeDictionary: Record<string, string> = {
