@@ -18,6 +18,9 @@ const statusLabelMap = {
 
 export function History() {
   const { state } = useTaskContext();
+  const sortedTasks = [...state.tasks].sort((a, b) => {
+    return b.startDate - a.startDate;
+  });
 
   return (
     <MainTemplate>
@@ -50,8 +53,14 @@ export function History() {
             </thead>
 
             <tbody>
-              {state.tasks.map(task => {
+              {sortedTasks.map(task => {
                 const status = getTaskStatus(task, state.activeTask);
+
+                const taskTypeDictionary = {
+                  workTime: 'Foco',
+                  shortBreakTime: 'Descanso curto',
+                  longBreakTime: 'Descanso longo',
+                };
 
                 return (
                   <tr key={task.id}>
@@ -63,7 +72,7 @@ export function History() {
                       {statusLabelMap[status]}
                     </td>
 
-                    <td>{task.type}</td>
+                    <td>{taskTypeDictionary[task.type]}</td>
                   </tr>
                 );
               })}
